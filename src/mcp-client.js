@@ -2,19 +2,33 @@ export const MCP_ENDPOINT = "https://pulse-leads-mcp.onrender.com/mcp";
 export const PORTAL_URL = "https://pulse-leads-mcp.onrender.com";
 
 async function callMcpTool(toolName, args) {
-  const response = await fetch(MCP_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      jsonrpc: "2.0",
-      id: Date.now(),
-      method: "tools/call",
-      params: {
-        name: toolName,
-        arguments: args
-      }
-    })
-  });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+  let response;
+  try {
+    response = await fetch(MCP_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller.signal,
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: Date.now(),
+        method: "tools/call",
+        params: {
+          name: toolName,
+          arguments: args
+        }
+      })
+    });
+  } catch (err) {
+    if (err.name === "AbortError") {
+      throw new Error("Request timed out after 15s. Please try again.");
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 
   if (!response.ok) {
     throw new Error(`Server returned HTTP ${response.status}`);

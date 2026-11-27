@@ -66,7 +66,7 @@ async function scanActiveTab() {
     }
 
     const analysis = analyzeTechSignals(signals);
-    currentDomain = analysis.domain;
+    currentDomain = (analysis.domain || "").replace(/^(app|docs|blog|dashboard|portal|auth|login)\./i, "");
     domainEl.textContent = analysis.domain || analysis.url;
     titleEl.textContent = analysis.title || "No page title";
 
