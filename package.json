@@ -1,11 +1,11 @@
 {
   "name": "stackscout-extension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "description": "StackScout Chrome Extension — Tech Stack & B2B Decision-Maker Finder",
   "private": true,
   "scripts": {
     "test": "node tests/run-tests.mjs",
-    "package": "powershell -NoProfile -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }; New-Item -ItemType Directory dist | Out-Null; Compress-Archive -Path manifest.json,icons,src -DestinationPath dist/stackscout-v1.0.0.zip -Force\""
+    "package": "powershell -NoProfile -Command \"if (Test-Path dist) { Remove-Item -Recurse -Force dist }; New-Item -ItemType Directory dist | Out-Null; Compress-Archive -Path manifest.json,icons,src -DestinationPath dist/stackscout-v1.1.0.zip -Force\""
   }
 }

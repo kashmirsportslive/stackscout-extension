@@ -232,6 +232,13 @@ async function init() {
   });
 
   await Promise.all([scanActiveTab(), refreshAccountStatus()]);
+
+  // Auto-scan when user switches tabs while Side Panel is open
+  if (chrome.tabs?.onActivated) {
+    chrome.tabs.onActivated.addListener(() => {
+      scanActiveTab();
+    });
+  }
 }
 
 init();

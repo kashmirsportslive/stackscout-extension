@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "StackScout — Tech Stack & Decision-Maker Finder",
   "short_name": "StackScout",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Detect any website's live tech stack, verify email deliverability, and discover B2B decision-makers with rollover credits.",
   "icons": {
     "16": "icons/icon-16.png",
