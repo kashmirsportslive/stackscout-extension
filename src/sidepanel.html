@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StackScout</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo-dot"></span>
+      <div>
+        <h1>StackScout</h1>
+        <p class="subtitle">Tech Stack &amp; Decision-Maker Finder</p>
+      </div>
+    </div>
+    <button id="btn-scan-top" class="btn btn-primary btn-sm" title="Scan Active Tab">Scan Tab</button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="scan" role="tab">Site Scan</button>
+    <button class="tab" data-tab="prospects" role="tab">Prospects</button>
+    <button class="tab" data-tab="account" role="tab">Credits</button>
+  </nav>
+
+  <main class="content">
+    <!-- TAB 1: SITE SCAN -->
+    <section id="tab-scan" class="panel active">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div id="site-domain" class="domain-title">Ready to scan active tab</div>
+            <div id="site-title" class="muted small">Click "Scan Tab" on any website</div>
+          </div>
+        </div>
+        <div id="tech-badges" class="badge-grid"></div>
+        <div id="page-contacts" class="page-contacts"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h3>Decision-Makers &amp; Outreach</h3>
+          <button id="btn-enrich" class="btn btn-accent btn-sm">Find Contacts</button>
+        </div>
+        <div id="enrich-status" class="muted small">Uses 1 credit per lookup (free trial included).</div>
+        <div id="enrich-results" class="results-list"></div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PROSPECT FINDER -->
+    <section id="tab-prospects" class="panel">
+      <div class="card">
+        <div class="form-row">
+          <input id="industry-input" type="text" placeholder="Industry (e.g. AI, Fintech, SaaS, Real Estate)" />
+          <button id="btn-search-prospects" class="btn btn-primary">Search</button>
+        </div>
+        <div class="actions-row">
+          <button id="btn-export-csv" class="btn btn-outline btn-sm">Download CSV</button>
+          <span id="prospects-status" class="muted small"></span>
+        </div>
+      </div>
+      <div id="prospects-results" class="results-list"></div>
+    </section>
+
+    <!-- TAB 3: ACCOUNT & CREDITS -->
+    <section id="tab-account" class="panel">
+      <div class="card">
+        <h3>API Key &amp; Rollover Credits</h3>
+        <p class="muted small">Paid credits never expire and roll over indefinitely.</p>
+        <div class="form-row">
+          <input id="api-key-input" type="text" placeholder="Paste API key (default: demo_free_key)" />
+          <button id="btn-save-key" class="btn btn-primary btn-sm">Save</button>
+        </div>
+        <div id="account-status" class="status-box muted small">Checking status...</div>
+        <div class="btn-stack">
+          <a id="link-trial" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Claim 20 Free Trial Credits</a>
+          <a id="link-upgrade" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Buy Rollover Credits ($9 Starter / $19 Pro)</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

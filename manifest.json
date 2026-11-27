@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "StackScout — Tech Stack & Decision-Maker Finder",
+  "short_name": "StackScout",
+  "version": "1.0.0",
+  "description": "Detect any website's live tech stack, verify email deliverability, and discover B2B decision-makers with rollover credits.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Open StackScout Side Panel",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  },
+  "background": {
+    "service_worker": "src/background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ]
+}
