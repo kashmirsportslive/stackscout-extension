@@ -116,10 +116,25 @@ function renderLeadCards(container, leads) {
           <div class="lead-meta"><strong>Email:</strong> <code>${escapeHtml(emailDisplay)}</code> &bull; ${mxBadge}</div>
           <div class="lead-meta"><strong>Intent:</strong> ${escapeHtml(l.intentScore)}/100 &bull; ${escapeHtml(l.recentHiringTrigger)}</div>
           ${hookHtml}
+          <div class="copy-row">
+            <button class="btn btn-outline btn-xs copy-btn" data-copy="${escapeHtml(emailDisplay)}">Copy Email</button>
+            ${l.outreachHook ? `<button class="btn btn-outline btn-xs copy-btn" data-copy="${escapeHtml(l.outreachHook)}">Copy Hook</button>` : ""}
+          </div>
         </div>
       `;
     })
     .join("");
+
+  for (const btn of container.querySelectorAll(".copy-btn")) {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy || "");
+        const prev = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = prev; }, 1200);
+      } catch {}
+    });
+  }
 }
 
 async function handleEnrichCompany() {
